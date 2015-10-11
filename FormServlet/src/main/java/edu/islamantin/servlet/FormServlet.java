@@ -1,3 +1,5 @@
+package edu.islamantin.servlet;
+
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -7,13 +9,14 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+
 public class FormServlet extends HttpServlet {
-    public static final File data = new File("C:\\Users\\Ислам\\Desktop\\data.txt");
+    public static final File data = new File("C:\\data.txt");
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        resp.getWriter().print(getHTML(""));
+        req.getRequestDispatcher("newjsp.jsp").forward(req, resp);
     }
 
     @Override
@@ -21,8 +24,8 @@ public class FormServlet extends HttpServlet {
             throws ServletException, IOException {
         if (formIsValid(req.getParameter("e-mail"),req.getParameter("password"))) {
             toFile(req.getParameter("e-mail"), req.getParameter("password"), req.getParameter("gender"), req.getParameter("newsletter"));
-            resp.getWriter().print(getHTML("You have registered successfully!"));
-        } else resp.getWriter().print(getHTML("The login details are incorrect"));
+            req.setAttribute("text", "You have registered successfully!");
+        } else req.setAttribute("text", "The login details are incorrect");
     }
 
     protected void toFile(String email, String password, String gender, String newsletter) throws FileNotFoundException {
@@ -55,40 +58,40 @@ public class FormServlet extends HttpServlet {
         return true;
     }
 
-    protected String getHTML(String text){
-        StringBuilder sb = new StringBuilder();
-        sb.append("<!DOCTYPE html>");
-        sb.append("<html>");
-        sb.append("<head>");
-        sb.append("<meta charset=\"utf-8\">");
-        sb.append("<title>Регистрация</title>");
-        sb.append("</head>");
-        sb.append("<body>");
-        sb.append("<div>");
-        sb.append("<h1>"+text+"</h1>");
-        sb.append("<form action=\"\" method=\"POST\">");
-        sb.append("<table>");
-        sb.append("<th>");
-        sb.append("<tr>");
-        sb.append("<p><input type=\"textarea\" name=\"e-mail\" placeholder=\"e-mail\"></p>");
-        sb.append("</tr>");
-        sb.append("<tr>");
-        sb.append("<p><input type=\"textarea\" name=\"password\" placeholder=\"password\"></p>");
-        sb.append("</tr>");
-        sb.append("<tr>");
-        sb.append("<p><input type=\"radio\" name=\"gender\" value=\"m\" checked>М");
-        sb.append("<input type=\"radio\" name=\"gender\" value=\"f\">Ж</p>");
-        sb.append("</tr>");
-        sb.append("<tr>");
-        sb.append("<p><input type=\"checkbox\" name=\"newsletter\">Подписаться на новости</p>");
-        sb.append("<input type=\"submit\">");
-        sb.append("</tr>");
-        sb.append("</th>");
-        sb.append("</table>");
-        sb.append("</form>");
-        sb.append("</div>");
-        sb.append("</body>");
-        sb.append("</html>");
-        return sb.toString();
-    }
+//    protected String getHTML(String text){
+//        StringBuilder sb = new StringBuilder();
+//        sb.append("<!DOCTYPE html>");
+//        sb.append("<html>");
+//        sb.append("<head>");
+//        sb.append("<meta charset=\"utf-8\">");
+//        sb.append("<title>registration</title>");
+//        sb.append("</head>");
+//        sb.append("<body>");
+//        sb.append("<div>");
+//        sb.append("<h1>"+text+"</h1>");
+//        sb.append("<form action=\"\" method=\"POST\">");
+//        sb.append("<table>");
+//        sb.append("<th>");
+//        sb.append("<tr>");
+//        sb.append("<p><input type=\"textarea\" name=\"e-mail\" placeholder=\"e-mail\"></p>");
+//        sb.append("</tr>");
+//        sb.append("<tr>");
+//        sb.append("<p><input type=\"textarea\" name=\"password\" placeholder=\"password\"></p>");
+//        sb.append("</tr>");
+//        sb.append("<tr>");
+//        sb.append("<p><input type=\"radio\" name=\"gender\" value=\"m\" checked>пїЅ");
+//        sb.append("<input type=\"radio\" name=\"gender\" value=\"f\">пїЅ</p>");
+//        sb.append("</tr>");
+//        sb.append("<tr>");
+//        sb.append("<p><input type=\"checkbox\" name=\"newsletter\">пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ</p>");
+//        sb.append("<input type=\"submit\">");
+//        sb.append("</tr>");
+//        sb.append("</th>");
+//        sb.append("</table>");
+//        sb.append("</form>");
+//        sb.append("</div>");
+//        sb.append("</body>");
+//        sb.append("</html>");
+//        return sb.toString();
+//    }
 }

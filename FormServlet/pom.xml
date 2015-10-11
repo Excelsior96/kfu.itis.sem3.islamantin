@@ -16,7 +16,6 @@
     </properties>
 
     <name>FormServlet Maven Webapp</name>
-    <url>http://maven.apache.org</url>
     <dependencies>
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -47,10 +46,10 @@
                     <username>admin</username>
                     <password>admin</password>
                     <url>http://localhost:8080/form</url>
-                    <update>true</update>
+                    <update>false</update>
                 </configuration>
             </plugin>
         </plugins>
-        <finalName>FormServlet</finalName>
+        <finalName>form</finalName>
     </build>
 </project>
