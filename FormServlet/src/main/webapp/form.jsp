@@ -15,13 +15,14 @@
                             <p><input type="textarea" name="e-mail" placeholder="e-mail"></p>
                         </tr>
                         <tr>
-                            <p><input type=\"textarea\" name=\"password\" placeholder=\"password\"></p>
+                            <p><input type="textarea" name="password" placeholder="password"></p>
                         </tr>
                         <tr>
-                            <p><input type=\"radio\" name=\"gender\" value=\"m\" checked>М<input type=\"radio\" name=\"gender\" value=\"f\">Ж</p>
+                            <p><input type="radio" name="gender" value="m" checked>М
+                                <input type="radio" name="gender" value="f">Ж</p>
                         </tr>
                         <tr>
-                            <p><input type=\"checkbox\" name=\"newsletter\">Подписаться на новости</p><input type=\"submit\">
+                            <p><input type="checkbox" name="newsletter">Подписаться на новости</p><input type="submit">
                         </tr>
                     </td>
                 </table>

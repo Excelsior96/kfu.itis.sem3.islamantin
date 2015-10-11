@@ -16,7 +16,7 @@ public class FormServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        req.getRequestDispatcher("newjsp.jsp").forward(req, resp);
+        req.getRequestDispatcher("form.jsp").forward(req, resp);
     }
 
     @Override

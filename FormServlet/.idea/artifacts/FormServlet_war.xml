@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="FormServlet:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="form.war">
+      <element id="artifact" artifact-name="FormServlet:war exploded" />
+    </root>
+  </artifact>
+</component>
