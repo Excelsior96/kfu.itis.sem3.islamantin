@@ -49,16 +49,16 @@ public class User {
     
     protected User fromFile(int row) throws FileNotFoundException{
         Scanner scan = new Scanner(data);
-        String line;
-        for (int i=0; i<row; i++){
+        String line = "";
+        for (int i=0; i<row; i++) {
             line = scan.nextLine();
         }
-        ///
+        String[] l = line.split(",");
         User u = new User();
-        u.email=___;
-        u.password=___;
-        u.gender=___;
-        u.newsletter=___;
+        u.email=l[0];
+        u.password=l[1];
+        u.gender=l[2];
+        u.newsletter=l[3];
         return u;
     }
     

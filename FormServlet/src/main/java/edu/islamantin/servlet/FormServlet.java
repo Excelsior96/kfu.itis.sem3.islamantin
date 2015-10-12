@@ -8,7 +8,7 @@ import java.io.*;
 
 
 public class FormServlet extends HttpServlet {
-    public static final File data = new File("C:\\Users\\Ислам\\Desktop\\edu\\FormServlet\\src\\main\\webapp\\WEB-INF\\entity_data\\data.csv");
+    public static final File data = new File("E:\\Workspace\\Repositories\\edu\\sem3\\FormServlet\\src\\main\\webapp\\WEB-INF\\data\\data.csv");
     private int loginsCount=0;
 
 
