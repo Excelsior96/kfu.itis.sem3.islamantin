@@ -53,9 +53,8 @@
                 <version>2.2</version>
                 <configuration>
                     <path>/${project.build.finalName}</path>
-                    <username>admin</username>
-                    <password>admin</password>
                     <url>http://localhost:8080/form</url>
+                    <server>localhost</server>
                     <update>false</update>
                 </configuration>
             </plugin>
