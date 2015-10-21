@@ -5,24 +5,28 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Registration</title>
+        <script type="text/javascript" src="/WEB-INF/javascript/inputchecker.js"></script>
     </head>
     <body>
         <div>
-            <h1><% ${text}%></h1>
+            <h3>Registration</h3>
+            <h4><%${text}%></h4>
             <form action="" method="POST">
                 <table>
                        <tr>
-                            <p><input type="textarea" name="email" placeholder="email"></p>
+                           <p id="inc1"></p><p><input type="textarea" name="email" placeholder="email" id="input1"></p>
                         </tr>
                         <tr>
-                            <p><input type="textarea" name="password" placeholder="password"></p>
+                            <p id="inc2"></p><p><input type="textarea" name="password" placeholder="password" id="input2"></p>
                         </tr>
                         <tr>
                             <p><input type="radio" name="gender" value="male" checked>М
                                 <input type="radio" name="gender" value="female">Ж</p>
                         </tr>
                         <tr>
-                            <p><input type="checkbox" name="newsletter" value="off">Подписаться на новости</p><input type="submit">
+                            <p><input type="checkbox" name="newsletter" value="off">Подписаться на новости</p>
+                            <input type="submit" id="submit">
+                            <input type="submit" name="authentification" value="Log in">
                         </tr>
                 </table>
             </form>

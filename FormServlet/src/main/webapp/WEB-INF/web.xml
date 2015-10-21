@@ -11,12 +11,28 @@
         <servlet-name>FormServlet</servlet-name>
         <servlet-class>edu.islamantin.servlet.FormServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AuthentificationServlet</servlet-name>
+        <servlet-class>edu.islamantin.servlet.AuthentificationServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ProfileServlet</servlet-name>
+        <servlet-class>edu.islamantin.servlet.ProfileServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ProfileServlet</servlet-name>
+        <url-pattern>/profile</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AuthentificationServlet</servlet-name>
+        <url-pattern>/form</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>TableServlet</servlet-name>
         <url-pattern>/table</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>FormServlet</servlet-name>
-        <url-pattern>/form</url-pattern>
+        <url-pattern>/reg</url-pattern>
     </servlet-mapping>
 </web-app>

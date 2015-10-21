@@ -27,7 +27,7 @@
 	</tr>
 	<tr class="s">
 		<c:forEach var="i" begin="0" end="${end}">
-			<c:forTokens items="${email}${i},${password}${i},${gender}${i},${newsletter}${i}" delims="," var="value">
+			<c:forTokens items="${email}${i},${password}${i},${gender}${i},${newsletter}${i},${about}${i}" delims="," var="value">
 				<td><c:out value="${value}"/><p></td>
 			</c:forTokens>
 		</c:forEach>

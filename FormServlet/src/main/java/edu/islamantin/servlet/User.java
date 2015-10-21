@@ -5,33 +5,36 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.PrintWriter;
 import java.util.Scanner;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class User {
     private String email;
     private String password;
     private String gender;
     private String newsletter;
-    private static int loginsCount;
+    private String about;
     
     User() {
         
     }
     
-    User(int loginsCount, String email, String password, String gender, String newsletter){
+    User( String email, String password, String gender, String newsletter){
         this.email=email;
         this.password=password;
         this.gender=gender;
         this.newsletter=newsletter;
-        User.loginsCount=loginsCount;
+        this.about="";
+    }
+
+    protected void setAbout(String about){
+        this.about = about;
+
+    }
+
+    protected String getAbout(){
+        return about;
     }
     
-    protected int getLoginsCount(){
-        return loginsCount;
-    }
-    
-     protected String getEmail(){
+    protected String getEmail(){
         return email;
     }
      
@@ -59,6 +62,7 @@ public class User {
         u.password=l[1];
         u.gender=l[2];
         u.newsletter=l[3];
+        u.about=l[4];
         return u;
     }
     
@@ -66,28 +70,14 @@ public class User {
         PrintWriter pw = new PrintWriter(new FileOutputStream(data));
         Scanner scan = new Scanner(data);
         StringBuilder sb = new StringBuilder();
-        
-        while (scan.hasNext()){
+
+        while (scan.hasNext()) {
             sb.append(scan.nextLine()).append("\n");
         }
         pw.print(sb.toString());
-        if (newsletter!="off") {
-            newsletter="on";
+        if (newsletter != "off") {
+            newsletter = "on";
         }
-        pw.print("\""+email+"\", \""+password+"\", \""+gender+"\", \""+newsletter+"\"");
-    }
-    
-    protected boolean formIsValid(){
-        Pattern p = Pattern.compile("\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*\\.\\w{2,4}");
-        Matcher m = p.matcher(email);
-        if (m.matches()==false){
-            return false;
-        }
-        p = Pattern.compile("\\w{4,}");
-        m = p.matcher(password);
-        if (m.matches()==false){
-            return false;
-        }
-        return true;
+        pw.print("\"" + email + "\", \"" + password + "\", \"" + gender + "\", \"" + newsletter + "\", \"" + about + "\"");
     }
 }

@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.ServletException;
+import javax.servlet.http.HttpSession;
 import java.io.*;
 
 
@@ -16,24 +17,24 @@ public class FormServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         req.setAttribute("text","");
-        getServletContext().getRequestDispatcher("/WEB-INF/views/form.jsp").forward(req, resp);
+        getServletContext().getRequestDispatcher("/WEB-INF/views/registration.jsp").forward(req, resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        User user = new User(loginsCount++,req.getParameter("email"), req.getParameter("password"), req.getParameter("gender"), req.getParameter("newsletter"));
-        if (user.formIsValid()) {
-            user.toFile();
-            req.setAttribute("text", "You have registered successfully!");
-            resp.sendRedirect(req.getRequestURI()+"?status=1");
-        } else {
-             req.setAttribute("text", "The login details are incorrect");
-             resp.sendRedirect(req.getRequestURI()+"?status=2");
-        }
-        getServletContext().getRequestDispatcher("/WEB-INF/views/form.jsp").forward(req, resp);
+        User user = new User(req.getParameter("email"), req.getParameter("password"), req.getParameter("gender"), req.getParameter("newsletter"));
+        user.toFile();
+        HttpSession session = req.getSession();
+        session.setAttribute("user", user);
+        resp.sendRedirect("/profile");
+        req.setAttribute("text", "You have registered successfully!");
+        getServletContext().getRequestDispatcher("/WEB-INF/views/profile.jsp").forward(req, resp);
     }
 
+    protected int getLoginsCount(){
+        return loginsCount;
+    }
 
 //    protected String getHTML(String text){
 //        StringBuilder sb = new StringBuilder();
