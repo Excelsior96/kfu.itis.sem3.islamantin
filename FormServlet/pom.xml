@@ -2,7 +2,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>edu.islamantin.servlet</groupId>
+    <groupId>edu.islamantin</groupId>
     <artifactId>FormServlet</artifactId>
     <packaging>war</packaging>
     <version>1.0</version>
@@ -20,7 +20,6 @@
 
     <name>FormServlet Maven Webapp</name>
     <dependencies>
-        <!-- JAVA stuff -->
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
@@ -38,11 +37,16 @@
             <artifactId>jstl</artifactId>
             <version>${javax.servlet.jstl.version}</version>
         </dependency>
-        <!-- Utilities -->
         <dependency>
-            <groupId>com.opencsv</groupId>
-            <artifactId>opencsv</artifactId>
-            <version>${com.opencsv.version}</version>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+            <version>1.9</version>
+        </dependency>
+        <dependency>
+            <groupId>org.codehaus.plexus</groupId>
+            <artifactId>plexus-digest</artifactId>
+            <version>1.0</version>
+            <type>jar</type>
         </dependency>
     </dependencies>
     <build>
@@ -65,7 +69,7 @@
                 <version>2.2</version>
                 <configuration>
                     <path>/${project.build.finalName}</path>
-                    <url>http://localhost:8080/form</url>
+                    <url>http://localhost:8010/</url>
                     <server>localhost</server>
                     <update>false</update>
                 </configuration>

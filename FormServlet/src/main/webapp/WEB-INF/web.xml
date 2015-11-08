@@ -1,23 +1,28 @@
-<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
-		 http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
-         version="3.1">
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee    http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+    
+    <welcome-file-list>
+        <welcome-file>form</welcome-file>    
+        <welcome-file>index.html</welcome-file>
+        <welcome-file>index.htm</welcome-file>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+    
     <servlet>
         <servlet-name>TableServlet</servlet-name>
-        <servlet-class>edu.islamantin.servlet.TableServlet</servlet-class>
+        <servlet-class>edu.islamantin.servlets.TableServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>FormServlet</servlet-name>
-        <servlet-class>edu.islamantin.servlet.FormServlet</servlet-class>
+        <servlet-class>edu.islamantin.servlets.FormServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>AuthentificationServlet</servlet-name>
-        <servlet-class>edu.islamantin.servlet.AuthentificationServlet</servlet-class>
+        <servlet-class>edu.islamantin.servlets.AuthentificationServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ProfileServlet</servlet-name>
-        <servlet-class>edu.islamantin.servlet.ProfileServlet</servlet-class>
+        <servlet-class>edu.islamantin.servlets.ProfileServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ProfileServlet</servlet-name>

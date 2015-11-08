@@ -10,8 +10,8 @@
 <body>
 <div style="float:right">
     <h3>Authentication</h3>
-    <h4><%${text}%></h4>
-    <form action="" method="POST">
+    <h4>${text}</h4>
+    <form action="<c:url value='/form' />" method="POST">
         <table>
             <tr>
                 <p id="inc1"></p><p><input type="textarea" name="email" placeholder="email" id="input1"></p>
@@ -21,11 +21,13 @@
             </tr>
             <tr>
                 <p><input type="checkbox" name="remember" value="off">Запомнить меня</p>
-                <input type="submit" id="submit">
-                <input type="submit" name="registration" value="Sign up">
+                <input type="submit" id="submit">                
             </tr>
         </table>
     </form>
+        <form action="<c:url value='/reg'/>" method="GET">
+            <input type="submit" name="registration" value="Sign up">
+        </form>
 </div>
 </body>
 </html>

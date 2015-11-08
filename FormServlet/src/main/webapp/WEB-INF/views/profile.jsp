@@ -8,12 +8,12 @@
 </head>
 <body>
 <div>
-  <p><%${text}%></p>
+  <p>${text}</p>
   <img src="http://findicons.com/files/icons/1580/devine_icons_part_2/128/account_and_control.png" alt="No avatar">
-  <h2>*<%${email}%></h2>
-  <h4><%${gender}%></h4>
+  <h2>${email}</h2>
+  <h4>${gender}</h4>
   <p><b>About me:</b></p>
-  <p><%${about}%></p>
+  <p>${about}</p>
 </div><br><p>Update:</p>
 <form action="" method="POST">
   <div>

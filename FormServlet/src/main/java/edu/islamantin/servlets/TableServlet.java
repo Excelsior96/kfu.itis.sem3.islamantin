@@ -1,4 +1,4 @@
-package edu.islamantin.servlet;
+package edu.islamantin.servlets;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -11,7 +11,7 @@ public class TableServlet extends HttpServlet {
    @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-       int loginsCount = new FormServlet().getLoginsCount();
+ /*      int loginsCount = new FormServlet().getLoginsCount();
        User u = new User();
        User[] user = new User[loginsCount];
        req.setAttribute("end",loginsCount);
@@ -23,13 +23,13 @@ public class TableServlet extends HttpServlet {
             req.setAttribute("newsletter"+i,u.getNewsletter());
             req.setAttribute("about"+i,u.getNewsletter());
         }
-        getServletContext().getRequestDispatcher("/WEB-INF/views/table.jsp").forward(req, resp);
-    }
+        getServletContext().getRequestDispatcher("/WEB-INF/views/table.jsp").forward(req, resp); */
+    } 
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-    }
+    } 
     
    
 }

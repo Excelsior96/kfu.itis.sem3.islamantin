@@ -1,44 +1,56 @@
-package edu.islamantin.servlet;
-
-import static edu.islamantin.servlet.FormServlet.data;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.PrintWriter;
-import java.util.Scanner;
+package edu.islamantin.servlets;
 
 public class User {
+    private int id;
     private String email;
     private String password;
     private String gender;
-    private String newsletter;
+    private String subscription;
     private String about;
     
-    User() {
-        
+    User(int id, String email, String password,  String gender, String subscription, String about){
+        this.id = id;
+        this.email = email;
+        this.password = password;
+        this.gender = gender;
+        this.subscription = subscription;
+        this.about = about;
     }
     
-    User( String email, String password, String gender, String newsletter){
-        this.email=email;
-        this.password=password;
-        this.gender=gender;
-        this.newsletter=newsletter;
-        this.about="";
+    User(String email, String password,  String gender, String subscription){
+        this.email = email;
+        this.password = password;
+        this.gender = gender;
+        this.subscription = subscription;
+        this.about = "";
     }
-
+    
+ /*   protected void setEmail(String email){
+        this.email = email;
+    }
+    
+    protected void setPassword(String password){
+        this.password = password;
+    }
+     
+    protected void setGender(String gender){
+         this.gender = gender;
+    }
+      
+    protected void setSubscription(String subscription){
+        this.subscription = subscription;
+    } */
     protected void setAbout(String about){
         this.about = about;
-
     }
-
-    protected String getAbout(){
-        return about;
-    }
+    
+    
     
     protected String getEmail(){
         return email;
     }
-     
-     protected String getPassword(){
+    
+    protected String getPassword(){
         return password;
     }
     
@@ -46,10 +58,15 @@ public class User {
         return gender;
     }
      
-     protected String getNewsletter(){
-        return newsletter;
+     protected String getSubscription(){
+        return subscription;
+    }
+     
+     protected String getAbout(){
+        return about;
     }
     
+    /*
     protected User fromFile(int row) throws FileNotFoundException{
         Scanner scan = new Scanner(data);
         String line = "";
@@ -79,5 +96,5 @@ public class User {
             newsletter = "on";
         }
         pw.print("\"" + email + "\", \"" + password + "\", \"" + gender + "\", \"" + newsletter + "\", \"" + about + "\"");
-    }
+    } */
 }

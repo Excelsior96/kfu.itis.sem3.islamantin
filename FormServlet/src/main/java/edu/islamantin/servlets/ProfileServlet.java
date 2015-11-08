@@ -1,4 +1,4 @@
-package edu.islamantin.servlet;
+package edu.islamantin.servlets;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -15,9 +15,9 @@ public class ProfileServlet extends HttpServlet {
         req.setAttribute("text", "");
         if (req.getSession().getAttribute("user")!=null) {
             user = (User) req.getSession().getAttribute("user");
-            req.setAttribute("email", user.getEmail());
-            req.setAttribute("gender", user.getGender());
-            req.setAttribute("about", user.getAbout());
+ //           req.setAttribute("email", user.getEmail());
+ //           req.setAttribute("gender", user.getGender());
+ //           req.setAttribute("about", user.getAbout());
             getServletContext().getRequestDispatcher("/WEB-INF/views/profile.jsp").forward(req, resp);
         } else {
             req.setAttribute("text", "You have to log in");
@@ -30,7 +30,7 @@ public class ProfileServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         req.setAttribute("text", "Info has been updated!");
-        user.setAbout(req.getParameter("about"));
+//        user.setAbout(req.getParameter("about"));
         resp.sendRedirect(req.getRequestURI() + "?status=1");
         getServletContext().getRequestDispatcher("/WEB-INF/views/profile.jsp").forward(req, resp);
     }
