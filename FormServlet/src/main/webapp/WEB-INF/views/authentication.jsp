@@ -5,7 +5,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Authentication</title>
-    <script type="text/javascript" src="/WEB-INF/javascript/inputchecker.js"></script>
+    <script type="text/javascript" src="/javascript/inputchecker.js"></script>
 </head>
 <body>
 <div style="float:right">
@@ -20,7 +20,7 @@
                 <p id="inc2"></p><p><input type="textarea" name="password" placeholder="password" id="input2"></p>
             </tr>
             <tr>
-                <p><input type="checkbox" name="remember" value="off">Запомнить меня</p>
+                <p><input type="checkbox" name="remember" value="true">Запомнить меня</p>
                 <input type="submit" id="submit">                
             </tr>
         </table>

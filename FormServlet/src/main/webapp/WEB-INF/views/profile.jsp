@@ -4,7 +4,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <title>Profile</title>
-  <script type="text/javascript" src="/WEB-INF/javascript/counter.js"></script>
+  <script type="text/javascript" src="/javascript/counter.js"></script>
 </head>
 <body>
 <div>
@@ -15,10 +15,10 @@
   <p><b>About me:</b></p>
   <p>${about}</p>
 </div><br><p>Update:</p>
-<form action="" method="POST">
+<form action="<c:url value='/profile' />" method="POST">
   <div>
     <p><textarea name="about" rows="5" cols="45" style="resize: none"></textarea></p>
-    <p><input type="submit" id="button"> <span id="counter">0</span>/200</p>
+    <p><input type="submit" id="button"> <span id="counter" style="color:black">0</span>/200</p>
   </div>
 </form>
 </body>

@@ -1,14 +1,15 @@
 package edu.islamantin.servlets;
 
+import edu.islamantin.repositoryes.UsersRepository;
+import edu.islamantin.exceptions.DBException;
+import edu.islamantin.exceptions.InvalidDataException;
+import edu.islamantin.exceptions.SuchUserDoesntExistException;
 import java.io.IOException;
-import java.util.Scanner;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
-//import static edu.islamantin.servlet.FormServlet.data;
 
 public class AuthentificationServlet extends HttpServlet {
 
@@ -21,23 +22,31 @@ public class AuthentificationServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-    /*    User user = new User(req.getParameter("email"), req.getParameter("password"), req.getParameter("gender"), req.getParameter("newsletter"));
-        Scanner scan = new Scanner(data);
-        String line = scan.nextLine();
-        while (line!=null) {
-            String[] l = line.split(",");
-            if (req.getParameter("email")==l[0]){
-                if (req.getParameter("password")==l[1]) {
-                    resp.sendRedirect("/profile");
+        if(req.getParameter("email") != null && req.getParameter("password") != null){
+            try {
+                if (UsersRepository.isValidData(req.getParameter("email"), req.getParameter("password"))) {
                     HttpSession session = req.getSession();
-                    session.setAttribute("user", user);
-                    getServletContext().getRequestDispatcher("/WEB-INF/views/profile.jsp").forward(req, resp);
+                    session.setAttribute("user", UsersRepository.getUser(req.getParameter("email"), UsersRepository.md5Apache(req.getParameter("password"))));
+                    resp.sendRedirect("/profile");
                 }
+            } catch (DBException ex) {
+                req.setAttribute("text", "Error with DB has been occured.");
+                getServletContext().getRequestDispatcher("/WEB-INF/views/authentication.jsp").forward(req, resp);
+                resp.sendRedirect(req.getRequestURI() + "?status=0");
+            } catch (SuchUserDoesntExistException ex){
+                req.setAttribute("text", "Such user doesn't exist.");
+                getServletContext().getRequestDispatcher("/WEB-INF/views/authentication.jsp").forward(req, resp);
+                resp.sendRedirect(req.getRequestURI() + "?status=0");
             }
-            line = scan.nextLine();
+            catch(InvalidDataException ex) {
+                req.setAttribute("text", "Incorrect password or e-mail!");
+                getServletContext().getRequestDispatcher("/WEB-INF/views/authentication.jsp").forward(req, resp);
+                resp.sendRedirect(req.getRequestURI() + "?status=0");
+            }
+        } else {
+            req.setAttribute("text", "You have to fill all fields!");
+            getServletContext().getRequestDispatcher("/WEB-INF/views/authentication.jsp").forward(req, resp);
+            resp.sendRedirect(req.getRequestURI() + "?status=0");
         }
-        req.setAttribute("text", "Incorrect password or e-mail");
-        resp.sendRedirect(req.getRequestURI() + "?status=0");
-        getServletContext().getRequestDispatcher("/WEB-INF/views/authentication.jsp").forward(req, resp);
-    */}
+    }
 }

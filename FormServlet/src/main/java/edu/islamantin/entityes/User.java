@@ -1,4 +1,7 @@
-package edu.islamantin.servlets;
+package edu.islamantin.entityes;
+
+import edu.islamantin.exceptions.DBException;
+import edu.islamantin.repositoryes.UsersRepository;
 
 public class User {
     private int id;
@@ -8,7 +11,11 @@ public class User {
     private String subscription;
     private String about;
     
-    User(int id, String email, String password,  String gender, String subscription, String about){
+    public User(){
+        
+    }
+    
+    public User(int id, String email, String password,  String gender, String subscription, String about){
         this.id = id;
         this.email = email;
         this.password = password;
@@ -17,7 +24,15 @@ public class User {
         this.about = about;
     }
     
-    User(String email, String password,  String gender, String subscription){
+    public User(String email, String password,  String gender, String subscription){
+        this.email = email;
+        this.password = password;
+        this.gender = gender;
+        this.subscription = subscription;
+        this.about = "";
+    }
+    
+    public User(String email, String password,  String gender, String subscription, String about){
         this.email = email;
         this.password = password;
         this.gender = gender;
@@ -40,29 +55,30 @@ public class User {
     protected void setSubscription(String subscription){
         this.subscription = subscription;
     } */
-    protected void setAbout(String about){
+    public void setAbout(String about) throws DBException{
         this.about = about;
+        UsersRepository.addAboutTo(about, this.email);
     }
     
     
     
-    protected String getEmail(){
+    public String getEmail(){
         return email;
     }
     
-    protected String getPassword(){
+    public String getPassword(){
         return password;
     }
     
-     protected String getGender(){
+     public String getGender(){
         return gender;
     }
      
-     protected String getSubscription(){
+     public String getSubscription(){
         return subscription;
     }
      
-     protected String getAbout(){
+     public String getAbout(){
         return about;
     }
     
